@@ -1,3 +1,13 @@
+def menu():
+    print("\n| Health Calculator Menu |")
+    print("1. Calculate age in minutes and seconds")
+    print("2. Calculate total heartbeats")
+    print("3. Calculate total sneezes")
+    print("4. Calculate total calories consumed")
+    print("5. Calculate burgers burned")
+    print("6. Display all calculations")
+    print("7. Exit")
+
 def age_in_min_sec(age_years)-> tuple[int, int]:
     minutes_in_year = 525600  # 60 * 24 * 365
     seconds_in_year = 31536000  # 60 * 60 * 24 * 365
@@ -26,14 +36,43 @@ def burger_burned(age_years) -> int:
     return total_calories // calories_per_burger
 
 def main():
-    print("\nWelcome to the Health Data Calculator!\n")
-    user_age_years = int(input("Enter your age in years: "))
-    minutes, seconds = age_in_min_sec(user_age_years)
-    print(f"Your age in minutes: {minutes}")
-    print(f"Your age in seconds: {seconds}")
-    print(f"Your heart has beaten approximately {heart_beats(user_age_years)} times.")
-    print(f"You have sneezed approximately {lifetime_sneezes(user_age_years)} times in your lifetime.")
-    print(f"You have consumed approximately {lifetime_calories(user_age_years)} calories in your lifetime.")
-    print(f"You have burned approximately {burger_burned(user_age_years)} burgers in your lifetime.")
+    print("\n~ Welcome to the Health Data Calculator! ~\n")
+    age_years = int(input("Enter your age in years: "))
+    while True:
+        menu()
+        choice = input("Enter your choice (1-7): ")
+        
+        if choice == '1':  
+            minutes, seconds = age_in_min_sec(age_years)
+            print(f"\nYou have lived for approximately {minutes} minutes or {seconds} seconds.")
+        elif choice == '2':
+            beats = heart_beats(age_years)
+            print(f"\nYou have had approximately {beats} heartbeats in your lifetime.")
+        elif choice == '3':
+            sneezes = lifetime_sneezes(age_years)
+            print(f"\nYou have sneezed approximately {sneezes} times in your lifetime.")
+        elif choice == '4':
+            calories = lifetime_calories(age_years)
+            print(f"\nYou have consumed approximately {calories} calories in your lifetime.")
+        elif choice == '5':
+            burgers = burger_burned(age_years)
+            print(f"\nYou have burned approximately {burgers} burgers in your lifetime.")
+        elif choice == '6':
+            minutes, seconds = age_in_min_sec(age_years)
+            beats = heart_beats(age_years)
+            sneezes = lifetime_sneezes(age_years)
+            calories = lifetime_calories(age_years)
+            burgers = burger_burned(age_years)
+            print(f"\nYou have lived for approximately {minutes} minutes or {seconds} seconds.")
+            print(f"You have had approximately {beats} heartbeats in your lifetime.")
+            print(f"You have sneezed approximately {sneezes} times in your lifetime.")
+            print(f"You have consumed approximately {calories} calories in your lifetime.")
+            print(f"You have burned approximately {burgers} burgers in your lifetime.")
+        elif choice == '7':
+            print("\nExiting the Health Calculator. Stay healthy!\n")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 7.")
 
-main()
+if __name__ == "__main__":
+    main()
