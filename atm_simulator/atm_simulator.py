@@ -1,3 +1,5 @@
+transactions = 0
+
 def pin_login():
     for i in range(3):
         pin = input("Enter your 4-digit PIN: ")
@@ -21,22 +23,35 @@ def check_balance(balance):
 
 def withdraw(balance):
     amount = float(input("Enter amount to withdraw: $"))
-    if amount > balance:
+    if amount <= 0:
+        print("\nInvalid withdrawal amount.\n")   
+    elif amount > balance:
         print("\nInsufficient funds.")
     else:
         balance -= amount
         print(f"\n${amount:.2f} withdrawal successful.")
         print(f"New balance: ${balance:.2f}\n")
+        global transactions 
+        transactions += 1
+    
+    if balance < 100:
+        print("Warning: Your balance is below $100.\n")
     return balance
 
 def deposit(balance):
     amount = float(input("Enter amount to deposit: $"))
-    balance += amount
-    print(f"\n${amount:.2f} deposit successful.")
-    print(f"New balance: ${balance:.2f}\n")
+    if amount <= 0:
+        print("\nInvalid deposit amount.\n")
+    else:
+        balance += amount
+        print(f"\n${amount:.2f} deposit successful.")
+        print(f"New balance: ${balance:.2f}\n")
+        global transactions
+        transactions += 1
     return balance
 
 def exit_atm():
+    print(f"\nTotal transactions: {transactions}")
     print("\nThank you for using the ATM. Goodbye!\n")
 
 def main():
