@@ -4,7 +4,7 @@ import random
 # Global variable to store student profiles in memory
 students = {}
 
-def read_from_file() -> dict:
+def read_from_file() -> dict: # Reads student profiles from a CSV file and returns a dictionary of profiles
     students_dict = {}
 
     try:
@@ -12,7 +12,8 @@ def read_from_file() -> dict:
             reader = csv.reader(file)
             next(reader, None)  # skip header row
 
-            for row in reader:
+            # Read each row and create a profile dictionary for each student, using the name as the key
+            for row in reader: 
                 if len(row) >= 7:
                     name = row[0]
                     students_dict[name] = {
@@ -34,7 +35,7 @@ def read_from_file() -> dict:
 # Load all students into the global dictionary when the program starts
 students = read_from_file()
 
-def save_profile_to_file(profile):
+def save_profile_to_file(profile): # Appends a new student profile to the CSV file
     try:
         with open("support_network/students.csv", "a", newline="") as file:
             writer = csv.writer(file)
@@ -50,10 +51,12 @@ def save_profile_to_file(profile):
     except IOError:
         print("Error: An error occurred while writing to the file.")
 
-def rewrite_file():
+def rewrite_file(): # Writes the entire students dictionary back to the CSV file, used for updates and deletions
     try:
         with open("support_network/students.csv", "w", newline="") as file:
             writer = csv.writer(file)
+
+            # Write the header row
             writer.writerow(["Name", 
                              "Age", 
                              "Condition", 
@@ -61,6 +64,8 @@ def rewrite_file():
                              "Major", 
                              "Stress Level", 
                              "Average Sleep Hours"])
+            
+            # Write each student's profile as a row in the CSV file
             for student in students.values():
                 writer.writerow([
                     student["Name"],
@@ -74,7 +79,7 @@ def rewrite_file():
     except IOError:
         print("Error: An error occurred while writing to the file.")
 
-def display_welcome_message():
+def display_welcome_message(): # Displays a welcome message to the user when they start the program
     print("\n~ Welcome to the Neurodivergent Education Resource Database! - N.E.R.D. ~\n")
     print("****************************************************************************")
     print("| This is a safe space for neurodivergent individuals to connect,          |")
@@ -85,7 +90,7 @@ def display_welcome_message():
     print("| you're not alone, and we're stronger together!                           |")
     print("****************************************************************************")
 
-def main_menu(profile):
+def main_menu(profile): # Displays the main menu and handles user input to navigate through different sections
    
     while True:
         print("\n~ Main Menu ~")
@@ -109,18 +114,20 @@ def main_menu(profile):
         else:
             print("\nInvalid choice. Please enter a number between 1 and 5.")
 
-def create_profile()-> dict:
+def create_profile()-> dict: # Creates a new student profile by asking the user for their information
     global students
 
     print("\nFirst, let's create your profile!")
     first_name = input("Enter your first name: ").title()
     last_name = input("Enter your last name: ").title()
 
+    # Check if the profile already exists based on the full name (first + last)
     full_name = f"{first_name} {last_name}"
-    if full_name in students:
+    if full_name in students: # If the profile already exists, load it and welcome the user back
         print(f"\nWelcome back, {full_name}! Your profile has been loaded.")
         return students[full_name]
     
+    # If the profile does not exist, create a new one by asking the user for their information
     age = int(input("Enter your age: "))
     condition = input("Enter your neurodivergent condition (e.g., Autism, ADHD, Dyslexia): ").strip().capitalize()
     college_year = input("Enter your college year (e.g., Freshman, Sophomore): ").capitalize()
@@ -138,16 +145,17 @@ def create_profile()-> dict:
     }
     print(f"\nProfile created successfully for {first_name}! Here's your information:")
 
+    # Display the profile information back to the user in a clear format
     for key, value in profile.items():
         print(f"{key}: {value}")
-
+    # Add the new profile to the global students dictionary and save it to the file
     students[full_name] = profile
 
     save_profile_to_file(profile)
 
     return profile
 
-def join_discussion():
+def join_discussion(): # Simulates a discussion forum
     print("\n~ Welcome to the Discussion ~")
     responses = (
     "I understand how you feel. You're not alone.",
@@ -164,7 +172,7 @@ def join_discussion():
         else:
             print(random.choice(responses))
 
-def access_resources(profile):
+def access_resources(profile): # Displays resource categories and allows the user to explore different types of resources
     while True:
         print("   \n~ Resource Categories ~")
         print("   1. Academic Support")
@@ -188,7 +196,7 @@ def access_resources(profile):
             print("\nInvalid choice. Please enter a number between 1 and 4.")
     print()
 
-def academic_support(profile):
+def academic_support(profile): # Provides resources for academic support, including time management tools, study techniques, and accommodations eligibility
     time_management_tools = [
         "Trello: A visual project management tool to organize tasks and deadlines", 
         "Forest: A focus timer app that helps you stay on track by planting virtual trees", 
@@ -224,11 +232,11 @@ def academic_support(profile):
         else:
             print("\nInvalid choice. Please enter a number between 1 and 4.")
 
-def calculate_accommodations_score(profile) -> float:
+def calculate_accommodations_score(profile) -> float: # Calculates a score based on the user's stress level and average sleep hours
     score = profile.get("Stress Level", 0) * 0.5 + (10 - profile.get("Average Sleep Hours", 0)) * 0.5
     return score
 
-def accommodations_eligibility(profile):
+def accommodations_eligibility(profile): # Determines the user's eligibility for accommodations and provides a list of potential accommodations
     score = calculate_accommodations_score(profile)
     accommodations = [
         "Extended time on exams",
@@ -252,7 +260,7 @@ def accommodations_eligibility(profile):
         print("- You are not eligible for accommodations at this time.")
     print()
 
-def mental_health_resources():
+def mental_health_resources(): # Provides a list of mental health resources specifically tailored for neurodivergent individuals
     mental_health = [
         "National Alliance on Mental Illness (NAMI)", 
         "Autistic Self Advocacy Network (ASAN)", 
@@ -262,7 +270,7 @@ def mental_health_resources():
     for resource in mental_health:
         print(f"- {resource}")
 
-def social_connection():
+def social_connection(): # Provides opportunities for social connections
     virtual_meetups = [
         "Something like Neurodivergent Virtual Meetup", 
         "Neurodivergent Social Hour", 
@@ -304,7 +312,7 @@ def social_connection():
         else:
             print("\nInvalid choice. Please enter a number between 1 and 4.")
 
-def connect_with_mentor(profile):
+def connect_with_mentor(profile): # Provides a mentor based on the user's neurodivergent condition
     mentors = {
         "John Doe": "Autism", 
         "Jane Smith": "ADHD", 
@@ -323,7 +331,7 @@ def connect_with_mentor(profile):
                 print(f"- {mentor} (Condition: {condition})")
                 print(f"  Contact: {email}")
 
-def profile_settings(profile):
+def profile_settings(profile): # Allows the user to update their profile information
     while True:
         print("\n.  ~ Profile Settings ~")
         print(".  1. Update Personal Information")
@@ -343,7 +351,7 @@ def profile_settings(profile):
         else:
             print("\nInvalid choice. Please enter a number between 1 and 4.")
 
-def update_personal_info(profile):
+def update_personal_info(profile): # Allows the user to update their personal information
     print("\nUpdate Personal Information")
     profile["Name"] = profile["Name"]  # Name is not editable to maintain consistency in the students dictionary
     profile["Age"] = int(input("Enter your age: "))
@@ -356,7 +364,7 @@ def update_personal_info(profile):
     rewrite_file()
     print("\nPersonal information updated successfully!")
 
-def update_stress_and_sleep(profile):
+def update_stress_and_sleep(profile): # Allows the user to update their stress level and average sleep hours
     print("\nUpdate Stress Level and Sleep Hours")
     profile["Stress Level"] = int(input("On a scale of 1-10, how stressed do you feel about college? "))
     profile["Average Sleep Hours"] = float(input("On average, how many hours of sleep do you get per night? "))
@@ -364,7 +372,7 @@ def update_stress_and_sleep(profile):
     rewrite_file()
     print("\nStress level and sleep hours updated successfully!")
 
-def delete_profile(profile):
+def delete_profile(profile): # Allows the user to delete their profile from the system
     confirmation = input("\nAre you sure you want to delete your profile? This action cannot be undone. (yes/no): ").lower()
     if confirmation == 'yes' or confirmation == 'y':
         del students[profile["Name"]]
@@ -374,7 +382,7 @@ def delete_profile(profile):
     else:
         print("\nProfile deletion canceled.")
 
-def average_stress_level(students):
+def average_stress_level(students): # Calculates the average stress level of all students in the system
     stress_values = [
         student["Stress Level"]
         for student in students.values()
@@ -382,7 +390,7 @@ def average_stress_level(students):
     ]
     return sum(stress_values) / len(stress_values) if stress_values else 0
 
-def average_sleep_hours(students):
+def average_sleep_hours(students): # Calculates the average sleep hours of all students in the system
     sleep_values = [
         student["Average Sleep Hours"]
         for student in students.values()
