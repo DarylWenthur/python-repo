@@ -1,9 +1,6 @@
 import csv
 import random
 
-# Global variable to store student profiles in memory
-students = {}
-
 def read_from_file() -> dict: # Reads student profiles from a CSV file and returns a dictionary of profiles
     students_dict = {}
 
@@ -32,9 +29,6 @@ def read_from_file() -> dict: # Reads student profiles from a CSV file and retur
 
     return students_dict
 
-# Load all students into the global dictionary when the program starts
-students = read_from_file()
-
 def save_profile_to_file(profile): # Appends a new student profile to the CSV file
     try:
         with open("support_network/students.csv", "a", newline="") as file:
@@ -51,7 +45,7 @@ def save_profile_to_file(profile): # Appends a new student profile to the CSV fi
     except IOError:
         print("Error: An error occurred while writing to the file.")
 
-def rewrite_file(): # Writes the entire students dictionary back to the CSV file, used for updates and deletions
+def rewrite_file(students): # Writes the entire students dictionary back to the CSV file, used for updates and deletions
     try:
         with open("support_network/students.csv", "w", newline="") as file:
             writer = csv.writer(file)
@@ -90,7 +84,7 @@ def display_welcome_message(): # Displays a welcome message to the user when the
     print("| you're not alone, and we're stronger together!                           |")
     print("****************************************************************************")
 
-def main_menu(profile): # Displays the main menu and handles user input to navigate through different sections
+def main_menu(profile, students): # Displays the main menu and handles user input to navigate through different sections
    
     while True:
         print("\n~ Main Menu ~")
@@ -107,15 +101,14 @@ def main_menu(profile): # Displays the main menu and handles user input to navig
         elif choice == '3':
             connect_with_mentor(profile)
         elif choice == '4':
-            profile_settings(profile)
+            profile_settings(profile, students)
         elif choice == '5':
             print("\nThank you for visiting N.E.R.D. Take care!\n")
             break
         else:
             print("\nInvalid choice. Please enter a number between 1 and 5.")
 
-def create_profile()-> dict: # Creates a new student profile by asking the user for their information
-    global students
+def create_profile(students)-> dict: # Creates a new student profile by asking the user for their information
 
     print("\nFirst, let's create your profile!")
     first_name = input("Enter your first name: ").title()
@@ -331,7 +324,7 @@ def connect_with_mentor(profile): # Provides a mentor based on the user's neurod
                 print(f"- {mentor} (Condition: {condition})")
                 print(f"  Contact: {email}")
 
-def profile_settings(profile): # Allows the user to update their profile information
+def profile_settings(profile, students): # Allows the user to update their profile information
     while True:
         print("\n.  ~ Profile Settings ~")
         print(".  1. Update Personal Information")
@@ -340,43 +333,43 @@ def profile_settings(profile): # Allows the user to update their profile informa
         print(".  4. Return to Main Menu")
         choice = input("Enter your choice (1-4): ")
         if choice == '1':
-            update_personal_info(profile)
+            update_personal_info(profile, students)
         elif choice == '2':
-            update_stress_and_sleep(profile)
+            update_stress_and_sleep(profile, students)
         elif choice == '3':
-            delete_profile(profile)
+            delete_profile(profile, students)
             break
         elif choice == '4':
             break
         else:
             print("\nInvalid choice. Please enter a number between 1 and 4.")
 
-def update_personal_info(profile): # Allows the user to update their personal information
+def update_personal_info(profile, students): # Allows the user to update their personal information
     print("\nUpdate Personal Information")
     profile["Name"] = profile["Name"]  # Name is not editable to maintain consistency in the students dictionary
     profile["Age"] = int(input("Enter your age: "))
     profile["Condition"] = input("Enter your neurodivergent condition (e.g., Autism, ADHD, Dyslexia): ").strip().capitalize()
     profile["College Year"] = input("Enter your college year (e.g., Freshman, Sophomore): ").capitalize()
-    profile["Major"] = input("Enter your major: ").strip().capitalize()
+    profile["Major"] = input("Enter your major: ").strip().title()
     profile["Stress Level"] = int(input("On a scale of 1-10, how stressed do you feel about college? "))
     profile["Average Sleep Hours"] = float(input("On average, how many hours of sleep do you get per night? "))
     students[profile["Name"]] = profile
-    rewrite_file()
+    rewrite_file(students)
     print("\nPersonal information updated successfully!")
 
-def update_stress_and_sleep(profile): # Allows the user to update their stress level and average sleep hours
+def update_stress_and_sleep(profile, students): # Allows the user to update their stress level and average sleep hours
     print("\nUpdate Stress Level and Sleep Hours")
     profile["Stress Level"] = int(input("On a scale of 1-10, how stressed do you feel about college? "))
     profile["Average Sleep Hours"] = float(input("On average, how many hours of sleep do you get per night? "))
     students[profile["Name"]] = profile
-    rewrite_file()
+    rewrite_file(students)
     print("\nStress level and sleep hours updated successfully!")
 
-def delete_profile(profile): # Allows the user to delete their profile from the system
+def delete_profile(profile, students): # Allows the user to delete their profile from the system
     confirmation = input("\nAre you sure you want to delete your profile? This action cannot be undone. (yes/no): ").lower()
     if confirmation == 'yes' or confirmation == 'y':
         del students[profile["Name"]]
-        rewrite_file()
+        rewrite_file(students)
         print("\nProfile deleted successfully.  Have a great day!")
         exit()
     else:
@@ -399,9 +392,12 @@ def average_sleep_hours(students): # Calculates the average sleep hours of all s
     return sum(sleep_values) / len(sleep_values) if sleep_values else 0
 
 def main():
+    students = {}
+    students = read_from_file()
     display_welcome_message()
-    user_profile = create_profile()
-    main_menu(user_profile)
+    user_profile = create_profile(students)
+    
+    main_menu(user_profile, students)
     
     print(f"Average Stress Level: {average_stress_level(students):.2f}")
     print(f"Average Sleep Hours: {average_sleep_hours(students):.2f}")
