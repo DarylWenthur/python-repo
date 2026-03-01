@@ -2,10 +2,11 @@ import csv
 import random
 from huggingface_hub import InferenceClient
 
-HF_TOKEN = "Add Your Hugging Face API Token Here" # Hugging Face API token for future use in AI features
+HF_TOKEN = "ENTER TOKEN HERE" # Hugging Face API token for future use in AI features
 client = InferenceClient(token=HF_TOKEN )
 
-def read_from_file() -> dict: # Reads student profiles from a CSV file and returns a dictionary of profiles
+def read_from_file() -> dict: 
+    """Reads student profiles from a CSV file and returns a dictionary of profiles"""
     students_dict = {}
 
     try:
@@ -33,7 +34,8 @@ def read_from_file() -> dict: # Reads student profiles from a CSV file and retur
 
     return students_dict
 
-def save_profile_to_file(profile): # Appends a new student profile to the CSV file
+def save_profile_to_file(profile): 
+    """Appends a new student profile to the CSV file"""
     try:
         with open("support_network_gui_ai/students.csv", "a", newline="") as file:
             writer = csv.writer(file)
@@ -49,7 +51,8 @@ def save_profile_to_file(profile): # Appends a new student profile to the CSV fi
     except IOError:
         print("Error: An error occurred while writing to the file.")
 
-def rewrite_file(students): # Writes the entire students dictionary back to the CSV file, used for updates and deletions
+def rewrite_file(students): 
+    """Writes the entire students dictionary back to the CSV file, used for updates and deletions"""
     try:
         with open("support_network_gui_ai/students.csv", "w", newline="") as file:
             writer = csv.writer(file)
@@ -77,8 +80,8 @@ def rewrite_file(students): # Writes the entire students dictionary back to the 
     except IOError:
         print("Error: An error occurred while writing to the file.")
 
-def create_update_profile(students, profile_data)-> dict: # Creates a new student profile by asking the user for their information
-
+def create_update_profile(students, profile_data)-> dict: 
+    """Creates a new student profile by asking the user for their information"""
     full_name = profile_data["Name"]
 
     # Check if profile exists
@@ -91,7 +94,8 @@ def create_update_profile(students, profile_data)-> dict: # Creates a new studen
         save_profile_to_file(profile_data)
         return "created"
 
-def calculate_accommodations_score(profile) -> float: # Calculates a score based on the user's stress level and average sleep hours
+def calculate_accommodations_score(profile) -> float: 
+    """Calculates a score based on the user's stress level and average sleep hours"""
     score = profile.get("Stress Level", 0) * 0.5 + (10 - profile.get("Average Sleep Hours", 0)) * 0.5
     return score
 
@@ -122,7 +126,8 @@ def accommodations_eligibility(profile):
 
     return text
 
-def connect_with_mentor(profile): # Provides a mentor based on the user's neurodivergent condition
+def connect_with_mentor(profile): 
+    """Provides a mentor based on the user's neurodivergent condition"""
     mentors = {
         "John Doe": "Autism", 
         "Jane Smith": "ADHD", 
@@ -143,7 +148,8 @@ def connect_with_mentor(profile): # Provides a mentor based on the user's neurod
 
     return text
 
-def average_stress_level(students): # Calculates the average stress level of all students in the system
+def average_stress_level(students): 
+    """Calculates the average stress level of all students in the system"""
     stress_values = [
         student["Stress Level"]
         for student in students.values()
@@ -151,7 +157,8 @@ def average_stress_level(students): # Calculates the average stress level of all
     ]
     return sum(stress_values) / len(stress_values) if stress_values else 0
 
-def average_sleep_hours(students): # Calculates the average sleep hours of all students in the system
+def average_sleep_hours(students):
+    """Calculates the average sleep hours of all students in the system"""
     sleep_values = [
         student["Average Sleep Hours"]
         for student in students.values()
@@ -160,6 +167,7 @@ def average_sleep_hours(students): # Calculates the average sleep hours of all s
     return sum(sleep_values) / len(sleep_values) if sleep_values else 0
 
 def get_ai_response(message: str) -> str:
+    """Sends a message to the Hugging Face Inference API and returns the AI's response"""
     response = client.chat_completion(
         model="deepseek-ai/DeepSeek-V3-0324",  # model with available inference provider
         messages=[

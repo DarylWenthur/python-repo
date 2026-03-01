@@ -8,39 +8,50 @@ current_profile = None
 # ---------- FUNCTIONS ----------
 
 def show_frame(frame):
+    """Brings the specified frame to the front for display"""
     frame.tkraise()
 
 def open_profile_form():
+    """Shows the profile creation/update form"""
     show_frame(profile_frame)
 
 def open_returning_form():
+    """Shows the returning user login form"""
     show_frame(returning_frame)
 
 def open_main_screen():
+    """Shows the main screen with resources and connections"""
     show_frame(main_frame)
 
 def open_academic_resources():
+    """Shows the academic resources screen"""
     show_frame(academic_frame)
 
 def open_mental_health_resources():
+    """Shows the mental health resources screen"""
     show_frame(mental_health_frame)
 
 def open_mentor_program():
+    """Shows the mentor program screen"""
     show_frame(mentor_frame)
 
 def open_discussion_groups():
+    """Shows the discussion groups screen"""
     show_frame(discussion_frame)
 
 def open_support_groups():
+    """Shows the support groups screen"""
     show_frame(support_frame)
 
 def open_statistics():
+    """Shows the statistics screen"""
     show_frame(statistics_frame)
 
 def submit_profile():
+    """Collects data from the profile form, validates it, creates/updates the profile, and saves it to the file"""
     global current_profile
 
-    name = name_entry.get().strip().title()  # Capitalize first letter of each word
+    name = name_entry.get().strip().title()
     age = age_entry.get().strip()
     neurodivergent_type = neurodivergent_type_entry.get().strip().upper()
     graduation_year = graduation_year_entry.get().strip()
@@ -80,7 +91,7 @@ def submit_profile():
 
     welcome_text = f"Welcome, {name}! Explore the resources and connections available to you."
 
-    # Remove old label if it exists (optional)
+    # Remove old label if it exists
     for widget in main_frame.grid_slaves(row=0, column=0):
         widget.destroy()
     
@@ -102,8 +113,9 @@ def submit_profile():
     show_frame(main_frame)
 
 def load_profile():
+    """Loads an existing profile based on the name entered in the returning user form, and shows the main screen if found"""
     global current_profile
-    name = returning_name_entry.get().strip().title()  # Capitalize first letter of each word
+    name = returning_name_entry.get().strip().title()
 
     if name.strip() == "":
         return_form_status_label.config(text="Please fill out all fields.")
@@ -118,7 +130,7 @@ def load_profile():
     current_profile = profile  # Set current profile for session
     welcome_text = f"Welcome back, {name}! Explore the resources and connections."
     
-    # Remove old label if it exists (optional)
+    # Remove old label if it exists
     for widget in main_frame.grid_slaves(row=0, column=0):
         widget.destroy()
     
@@ -137,12 +149,14 @@ def enable_menu():
     window.config(menu=menu_bar)
 
 def exit_program():
+    """Exits the program safely"""
     window.quit()
 
 
 # ---------- GUI SETUP ----------
 
 def setup_frames():
+    """Initializes all the frames and widgets for the GUI, but does not show them yet"""
     global container
     global welcome_frame, profile_frame, returning_frame, main_frame, academic_frame
     global mental_health_frame, mentor_frame, discussion_frame, support_frame, statistics_frame
@@ -169,11 +183,11 @@ def setup_frames():
         bg=welcome_frame.cget("bg"),  
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,   # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
+        relief="solid",
 
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
@@ -235,7 +249,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=returning_frame.cget("bg")).grid(row=1, column=0, sticky="e", padx=10, pady=5)
-    returning_name_entry = tk.Entry(returning_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    returning_name_entry = tk.Entry(returning_frame, 
+                                    font=("Arial", 12), 
+                                    fg="#2f2f2f", 
+                                    bg="#f4f8fb")
     returning_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
     submit_button = tk.Button(
@@ -249,7 +266,10 @@ def setup_frames():
     )
     submit_button.grid(row=2, column=1, sticky="w", pady=10)
 
-    return_form_status_label = tk.Label(returning_frame, bg=returning_frame.cget("bg"),text="", fg="red")
+    return_form_status_label = tk.Label(returning_frame, 
+                                        bg=returning_frame.cget("bg"),
+                                        text="", 
+                                        fg="red")
     return_form_status_label.grid(row=3, column=0, columnspan=2, pady=5)
 
     # New & Update Profile Frame
@@ -268,7 +288,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=1, column=0, sticky="e", padx=10)
-    name_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    name_entry = tk.Entry(profile_frame, 
+                          font=("Arial", 12), 
+                          fg="#2f2f2f", 
+                          bg="#f4f8fb")
     name_entry.grid(row=1, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -276,7 +299,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=2, column=0, sticky="e", padx=10)
-    age_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    age_entry = tk.Entry(profile_frame, 
+                         font=("Arial", 12), 
+                         fg="#2f2f2f", 
+                         bg="#f4f8fb")
     age_entry.grid(row=2, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -284,7 +310,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=3, column=0, sticky="e", padx=10)
-    neurodivergent_type_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    neurodivergent_type_entry = tk.Entry(profile_frame, 
+                                         font=("Arial", 12), 
+                                         fg="#2f2f2f", 
+                                         bg="#f4f8fb")
     neurodivergent_type_entry.grid(row=3, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -292,7 +321,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=4, column=0, sticky="e", padx=10)
-    graduation_year_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    graduation_year_entry = tk.Entry(profile_frame, 
+                                      font=("Arial", 12), 
+                                      fg="#2f2f2f", 
+                                      bg="#f4f8fb")
     graduation_year_entry.grid(row=4, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -300,7 +332,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=5, column=0, sticky="e", padx=10)
-    major_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    major_entry = tk.Entry(profile_frame, 
+                           font=("Arial", 12), 
+                           fg="#2f2f2f", 
+                           bg="#f4f8fb")
     major_entry.grid(row=5, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -308,7 +343,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=6, column=0, sticky="e", padx=10)
-    stress_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    stress_entry = tk.Entry(profile_frame, 
+                            font=("Arial", 12), 
+                            fg="#2f2f2f", 
+                            bg="#f4f8fb")
     stress_entry.grid(row=6, column=1, padx=10, pady=5)
 
     tk.Label(profile_frame, 
@@ -316,7 +354,10 @@ def setup_frames():
              font=("Arial", 12), 
              fg="#2f2f2f", 
              bg=profile_frame.cget("bg")).grid(row=7, column=0, sticky="e", padx=10)
-    average_sleep_entry = tk.Entry(profile_frame, font=("Arial", 12), fg="#2f2f2f", bg="#f4f8fb")
+    average_sleep_entry = tk.Entry(profile_frame, 
+                                font=("Arial", 12), 
+                                fg="#2f2f2f", 
+                                bg="#f4f8fb")
     average_sleep_entry.grid(row=7, column=1, padx=10, pady=5)
 
     submit_button = tk.Button(
@@ -387,16 +428,16 @@ def setup_frames():
     # Create a Label that can show multiple lines
     info_label = tk.Label(
         academic_frame,
-        text="",         # start empty
+        text="",
         font=("Arial", 12),
-        bg=academic_frame.cget("bg"),      # blend with background if possible
+        bg=academic_frame.cget("bg"),
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,   # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
+        relief="solid",
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
     )
@@ -453,17 +494,16 @@ def setup_frames():
     # Create a Label that can show multiple lines
     mh_info_label = tk.Label(
         mental_health_frame,
-        text="",         # start empty
+        text="",
         font=("Arial", 12),
-        bg=mental_health_frame.cget("bg"),      # blend with background if possible
+        bg=mental_health_frame.cget("bg"),
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,   # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
-
+        relief="solid",
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
     )
@@ -493,16 +533,16 @@ def setup_frames():
 
     men_info_label = tk.Label(
         mentor_frame,
-        text="",         # start empty
+        text="",
         font=("Arial", 12),
-        bg=mentor_frame.cget("bg"),      # blend with background if possible
+        bg=mentor_frame.cget("bg"),
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,   # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
+        relief="solid",
 
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
@@ -536,7 +576,7 @@ def setup_frames():
         bg=discussion_frame.cget("bg")
     ).grid(row=0, column=0, pady=20)
 
-    # Output box (AI response goes here)
+    # Output box for AI response
     dis_info_box = scrolledtext.ScrolledText(
         discussion_frame,
         font=("Arial", 12),
@@ -544,7 +584,7 @@ def setup_frames():
         width=84,
         height=10,
         bd=1,
-        bg=discussion_frame.cget("bg"),      # blend with background if possible
+        bg=discussion_frame.cget("bg"),
         relief="solid"
     )
 
@@ -637,16 +677,16 @@ def setup_frames():
     # Create a Label that can show multiple lines
     sup_info_label = tk.Label(
         support_frame,
-        text="",         # start empty
+        text="",
         font=("Arial", 12),
-        bg=support_frame.cget("bg"),      # blend with background if possible
+        bg=support_frame.cget("bg"),
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,  # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
+        relief="solid",
 
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
@@ -690,20 +730,23 @@ def setup_frames():
     statistics_frame = tk.Frame(container, bg="#cfe8ff")
 
     statistics_frame.pack_propagate(False)  # Prevent frame from shrinking to fit contents
-    tk.Label(statistics_frame, text="Statistics", font=("Arial", 16), bg="#cfe8ff").grid(row=0, column=0, pady=20)
+    tk.Label(statistics_frame, 
+             text="Statistics", 
+             font=("Arial", 16), 
+             bg="#cfe8ff").grid(row=0, column=0, pady=20)
 
     stat_info_label = tk.Label(
     statistics_frame,
-        text="",         # start empty
+        text="",
         font=("Arial", 12),
-        bg=statistics_frame.cget("bg"),      # blend with background if possible
+        bg=statistics_frame.cget("bg"),
         fg="#2f2f2f",
         justify="left",
-        wraplength=700,   # wrap long text
-        width=84,   # fixes width
-        height=10,   # fixes height
+        wraplength=700,
+        width=84,
+        height=10,
         bd=1,
-        relief="solid",        # solid border
+        relief="solid",
         highlightthickness=2,  
         highlightbackground="#C7D5E0"
     )
@@ -722,7 +765,7 @@ def setup_frames():
         command=lambda: stat_info_label.config(text=f"Average Stress Level: {logic.average_stress_level(students):.2f}\nAverage Sleep Hours: {logic.average_sleep_hours(students):.2f}"))
     statistics_button.pack(side=tk.LEFT, padx=5)
 
-    # STACK ALL FRAMES (ADD THIS AT END OF setup_frames)
+    # Show all frames in the same location - only the one raised to the top will be visible
     for frame in (
         welcome_frame,
         profile_frame,
@@ -738,7 +781,7 @@ def setup_frames():
         frame.grid(row=0, column=0, sticky="nsew")
 
 def setup_menu():
-
+    """Initializes the menu bar and its options, but does not show it until after profile creation"""
     global menu_bar
 
     menu_bar = tk.Menu(window)
@@ -780,9 +823,6 @@ def main():
     setup_frames()
     show_frame(welcome_frame)  # Start on welcome screen
     setup_menu()
-
-    # Start on welcome screen
-    show_frame(welcome_frame)
 
     window.mainloop()
 
