@@ -63,10 +63,10 @@ Name, Age, Condition, College Year, Major, Stress Level, Average Sleep Hours
 
 Score Range	Eligibility:
 
-≥ 9	Full accommodations
-≥ 7	Top 3 accommodations
-≥ 4	Top 2 accommodations
-< 4	Not eligible
+- ≥ 9	Full accommodations
+- ≥ 7	Top 3 accommodations
+- ≥ 4	Top 2 accommodations
+- < 4	Not eligible
 
 Accomodations include: 
 
