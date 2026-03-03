@@ -30,7 +30,7 @@ The system is modular and easily extendable for GUI integration or database expa
 
 The application reads from and writes to:
 
-support_network_gui/students.csv
+`support_network_gui/students.csv`
 
 ## 📊 CSV File Requirements
 
