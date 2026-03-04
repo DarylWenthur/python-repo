@@ -179,6 +179,67 @@ def get_ai_response(message: str) -> str:
     # The API returns a typical OpenAI‑like response format
     return response.choices[0].message.content
 
+def show_graphs():
+    """Displays a scatter plot of stress levels vs average sleep hours for all students, color-coded by condition"""
+    import pandas as pd
+    import matplotlib.pyplot as plt
+
+    try:
+        df = pd.read_csv("support_network_gui/students.csv")
+
+        # Drop missing values to avoid errors
+        stress = df["Stress Level"].dropna()
+        sleep = df["Average Sleep Hours"].dropna()
+
+        # Make sure both have the same length
+        min_len = min(len(stress), len(sleep))
+        stress = stress[:min_len]
+        sleep = sleep[:min_len]
+
+        group1 = df[df["Condition"] == "Neurotypical"]
+        group2 = df[df["Condition"] == "ADHD"]
+        group3 = df[df["Condition"] == "Autism"]
+        group4 = df[df["Condition"] == "Dyslexia"]
+        group5 = df[df["Condition"] == "Anxiety"]
+
+        plt.figure(figsize=(6, 4))
+        plt.scatter(group1["Stress Level"], 
+                    group1["Average Sleep Hours"], 
+                    label="Neurotypical",
+                    marker="o",
+                    alpha=0.7)
+        plt.scatter(group2["Stress Level"], 
+                    group2["Average Sleep Hours"], 
+                    label="ADHD", 
+                    marker="s",
+                    alpha=0.7)
+        plt.scatter(group3["Stress Level"], 
+                    group3["Average Sleep Hours"], 
+                    label="Autism", 
+                    marker="^",
+                    alpha=0.7)
+        plt.scatter(group4["Stress Level"], 
+                    group4["Average Sleep Hours"], 
+                    label="Dyslexia", 
+                    marker="D",
+                    alpha=0.7)
+        plt.scatter(group5["Stress Level"], 
+                    group5["Average Sleep Hours"], 
+                    label="Anxiety", 
+                    marker="X",
+                    alpha=0.7)
+        plt.legend(loc="upper left")
+        plt.title("Stress vs Sleep Hours")
+        plt.xlabel("Stress Level")
+        plt.ylabel("Average Sleep Hours")
+        plt.grid(axis="y", linestyle="--", alpha=0.7)
+        plt.show()
+
+    except FileNotFoundError:
+        print("students.csv not found!")
+    except Exception as e:
+        print(f"Error showing graph: {e}")
+        
 def main():
     students = {}
     students = read_from_file()
