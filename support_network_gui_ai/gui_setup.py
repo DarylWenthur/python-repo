@@ -765,6 +765,16 @@ def setup_frames():
         command=lambda: stat_info_label.config(text=f"Average Stress Level: {logic.average_stress_level(students):.2f}\nAverage Sleep Hours: {logic.average_sleep_hours(students):.2f}"))
     statistics_button.pack(side=tk.LEFT, padx=5)
 
+     show_graphs_button = tk.Button(
+        button_frame, 
+        text="Show Graph",
+            font=("Arial", 12),
+            fg="#2f2f2f",
+            bg="#b7d7c8",
+            activebackground="#a3cbb7",
+        command=lambda: stat_info_label.config(text="Showing graph...") or logic.show_graphs())
+    show_graphs_button.pack(side=tk.LEFT, padx=5)
+
     # Show all frames in the same location - only the one raised to the top will be visible
     for frame in (
         welcome_frame,
