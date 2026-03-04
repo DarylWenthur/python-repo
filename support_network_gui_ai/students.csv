@@ -1,20 +1,103 @@
 Name,Age,Condition,College Year,Major,Stress Level,Average Sleep Hours
-Alex Johnson,20,ADHD,2028,Computer Science,8,5.0
-Jordan Smith,19,Autism,2029,Biology,6,7.5
-Taylor Lee,21,Anxiety Disorder,2027,Psychology,9,4.0
-Bob Boyles,23,Autism,2028,Nursing,6,6.0
-Stacy Williams,20,Adhd,2027,Business,8,5.0
-Megan Butters,21,Dyslexia,2028,Mathematics,6,6.0
-Susan Ford,18,Autism,2029,Engineering,8,5.0
-Jason Voorhees,34,Psycho,2026,Fire science,9,0.0
-Trina Smith,45,Adhd,2027,Nursing,9,7.0
-Ray Ray,21,Adhd,2029,Business,9,12.0
-Daryl Wenthur,49,ADHD,2027,IT,5,7.0
-Betty Williams,20,Dyslexia,2028,Aviation,8,6.0
-Martin Law,18,Autism,2029,Civil Engineering,9,
-Max Effort,21,Autism,2028,Mechanical Engineering,7,
-Paul Small,22,Autism,2027,Biology,6,
-Ben Solo,28,ADHD,2026,Nursing,8,5.0
-Linda Monroe,20,ADHD,2028,Business,7,8.0
-Harry Potter,20,ADHD,2027,MAGIC,7,6.0
-Charles Manson,43,SERIAL,2030,CULINARY,4,2.0
+Mary Kirby,21,Anxiety,2026,Business,9,9.0
+Stuart Adams,18,Neurotypical,2027,Engineering,7,8.9
+James Mckenna,18,Autism,2030,Business,4,9.8
+William Murray,23,Neurotypical,2028,Physics,9,5.8
+Marcia Helmick,20,Autism,2029,Biology,9,8.8
+John Meade,18,Dyslexia,2029,Biology,2,9.5
+George Brown,20,Autism,2027,History,5,7.1
+Samuel Askew,25,Anxiety,2026,Economics,9,7.2
+Ashley Senske,20,Autism,2026,Biology,1,4.7
+Robert Moore,22,Autism,2030,Engineering,1,9.0
+Kenneth Yates,18,Anxiety,2028,Biology,6,9.6
+Jane Cadorette,23,Dyslexia,2030,Computer Science,9,7.4
+Marcus Haley,18,Dyslexia,2028,Physics,3,7.4
+Stephan Newby,22,Autism,2027,Business,2,6.9
+Kathleen Pigg,19,ADHD,2029,Biology,1,8.5
+Elida Bell,20,ADHD,2030,Biology,2,4.5
+Janice Oconnor,20,Dyslexia,2027,Economics,1,7.0
+Johnny Ring,22,Neurotypical,2029,Psychology,3,8.8
+Marie Ferguson,21,Dyslexia,2029,Engineering,3,5.2
+John Floyd,24,Autism,2030,Economics,4,9.6
+Jasmine Martin,19,ADHD,2029,Business,8,8.6
+Kenneth Salos,20,Anxiety,2027,Biology,8,4.2
+Wendell Becerra,24,Dyslexia,2026,History,7,9.7
+Wade Bowens,19,Neurotypical,2030,Mathematics,1,6.2
+Whitney Ross,25,Anxiety,2028,Biology,7,8.7
+Richard Oakland,24,Autism,2030,Mathematics,8,5.9
+Paul Phillips,20,Neurotypical,2030,History,4,6.5
+Raymond Caudill,24,Autism,2026,Economics,3,4.5
+Katherine Warner,18,ADHD,2028,Business,4,5.0
+Lawrence Smallidge,25,Autism,2030,Computer Science,9,4.2
+Dorothy Reber,22,ADHD,2030,Computer Science,9,6.2
+Joel Cecena,20,Neurotypical,2030,Economics,3,8.3
+Jake Glenn,18,Neurotypical,2026,Physics,2,6.4
+Dennis Arroyo,20,ADHD,2026,Engineering,7,5.8
+Jennifer Cross,19,ADHD,2028,Business,4,5.4
+Antonio Akin,24,Neurotypical,2026,Computer Science,6,5.8
+Mary Williams,23,Dyslexia,2026,Physics,4,7.5
+Clara Gardner,25,Dyslexia,2027,Psychology,7,5.0
+George Garcia,20,Dyslexia,2030,Biology,7,8.0
+Michael Smith,18,Dyslexia,2026,Biology,2,5.0
+Aaron Ramaudar,21,Dyslexia,2028,Biology,6,9.2
+Vincent Feaster,25,Dyslexia,2030,Computer Science,8,4.7
+Robert Roy,24,Anxiety,2028,Computer Science,5,4.6
+Joyce Sharp,24,Neurotypical,2029,Engineering,5,4.6
+Wayne Moreschi,18,Dyslexia,2027,Mathematics,6,7.7
+Peter Meek,19,Autism,2030,Engineering,2,6.7
+Gracie Goessl,24,Autism,2029,Psychology,8,5.8
+Judi Irby,19,Autism,2026,Physics,8,6.6
+Maxine Trasher,22,Autism,2027,Computer Science,5,9.8
+Mary Carbajal,20,Autism,2028,Psychology,8,9.0
+Winona Fox,23,Anxiety,2029,Psychology,5,6.1
+Kitty Romano,20,Neurotypical,2027,Art,4,7.3
+Suzanne Howlett,22,Autism,2028,Biology,9,6.7
+Ashley Butler,22,Neurotypical,2026,Biology,4,4.0
+Elsie Felder,25,Autism,2026,Mathematics,7,8.6
+Lonnie Delcamp,24,Dyslexia,2027,Art,6,5.7
+Katie Buchanan,22,Autism,2027,Business,3,4.9
+Glenda Odell,22,Neurotypical,2027,Computer Science,8,8.0
+Laura Blackwell,21,Neurotypical,2026,Psychology,4,7.3
+Tyler Skousen,20,Autism,2028,Biology,1,5.7
+Leslie Graser,25,Neurotypical,2026,Business,5,9.1
+Irene Runyon,19,Autism,2030,Computer Science,8,5.6
+Ronald Harris,24,Neurotypical,2028,Economics,7,9.6
+Sharon Vida,23,ADHD,2027,Economics,4,8.2
+Tina Shelby,18,Dyslexia,2026,Business,6,5.2
+Shelley Brummer,19,ADHD,2029,History,7,7.5
+Claude Schrock,22,Neurotypical,2026,Business,5,7.9
+Naomi Francois,24,Anxiety,2026,Business,5,4.9
+Glenn Basile,23,Dyslexia,2029,Art,1,8.0
+Brian Hennessy,18,Neurotypical,2027,Business,2,8.4
+Homer Vidot,19,Dyslexia,2029,Economics,9,5.9
+Mark Collura,24,ADHD,2026,Business,6,6.4
+Walter Petty,18,Anxiety,2027,Economics,2,9.5
+Norman Ventura,23,Dyslexia,2026,Engineering,1,7.8
+Timothy Hughes,19,Autism,2028,Engineering,1,8.0
+Donald Willardson,18,Anxiety,2030,Psychology,3,5.6
+Katherine Crow,19,Autism,2029,Engineering,8,9.2
+Shirley Durbin,18,ADHD,2029,Computer Science,4,7.2
+Jeffrey Marshall,25,Autism,2028,History,2,7.3
+Juan Honeycutt,25,ADHD,2028,Computer Science,5,7.3
+Winnifred Foster,23,Autism,2029,Mathematics,3,7.8
+Lloyd Black,22,ADHD,2030,Mathematics,6,8.4
+Crystal Solis,23,ADHD,2026,Psychology,2,6.7
+Margaret Clark,24,Autism,2030,Biology,1,8.1
+Angela Davis,22,Anxiety,2027,Economics,6,9.9
+Marsha Wooten,20,Dyslexia,2027,History,5,8.5
+William Dominguez,19,Autism,2029,Economics,4,9.5
+Ana Tracy,24,Autism,2030,Biology,3,5.9
+Anne Blakley,19,Autism,2026,Engineering,7,4.7
+Marian Fleming,18,Dyslexia,2029,Engineering,9,9.6
+Michael Mcconnell,23,Dyslexia,2028,History,5,7.8
+Joshua Wiedemann,25,Dyslexia,2027,Mathematics,3,7.7
+Arthur Loughry,21,ADHD,2030,Engineering,3,7.5
+Patricia Stone,22,Anxiety,2030,Psychology,4,9.4
+Ana Scott,20,Anxiety,2028,Computer Science,3,9.4
+Loretta Couch,23,Anxiety,2026,Business,9,7.6
+Walter Mcgowan,25,Neurotypical,2030,History,5,6.6
+Roger Thibodeau,20,Anxiety,2027,History,7,8.5
+Henry Cleary,24,ADHD,2030,Business,7,6.4
+David Bellas,18,Dyslexia,2028,Economics,7,7.4
+Daryl Wenthur,49,ADHD,2027,IT,1,9.0
+Betty White,69,AUTISM,2029,IT,6,7.0
