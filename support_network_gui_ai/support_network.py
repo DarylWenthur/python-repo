@@ -185,7 +185,7 @@ def show_graphs():
     import matplotlib.pyplot as plt
 
     try:
-        df = pd.read_csv("support_network_gui/students.csv")
+        df = pd.read_csv("support_network_gui_ai/students.csv")
 
         # Drop missing values to avoid errors
         stress = df["Stress Level"].dropna()
@@ -243,6 +243,7 @@ def show_graphs():
 def main():
     students = {}
     students = read_from_file()
+    show_graphs()
 
 if __name__ == "__main__":
     main()

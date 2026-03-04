@@ -765,7 +765,7 @@ def setup_frames():
         command=lambda: stat_info_label.config(text=f"Average Stress Level: {logic.average_stress_level(students):.2f}\nAverage Sleep Hours: {logic.average_sleep_hours(students):.2f}"))
     statistics_button.pack(side=tk.LEFT, padx=5)
 
-     show_graphs_button = tk.Button(
+    show_graphs_button = tk.Button(
         button_frame, 
         text="Show Graph",
             font=("Arial", 12),
