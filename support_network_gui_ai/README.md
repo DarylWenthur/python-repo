@@ -1,5 +1,5 @@
 
-# 🧠N.E.R.D.  Neurodivergent Student Support Network
+# 🧠N.E.R.D.  Neurodivergent Education Resource Database
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Status](https://img.shields.io/badge/Status-Active-success)
