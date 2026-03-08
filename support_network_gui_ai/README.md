@@ -39,7 +39,7 @@ Name, Age, Condition, College Year, Major, Stress Level, Average Sleep Hours
 
 ### Example 
 
-`Jane Doe,20,ADHD,Sophomore,Psychology,8,6.5`
+`Jane Doe,20,ADHD,1997,Psychology,8,6.5`
 
 ## 🛠 Features
 
@@ -47,7 +47,7 @@ Name, Age, Condition, College Year, Major, Stress Level, Average Sleep Hours
 
 - Read student profiles from CSV: `read_from_file()`
 - Create new profiles or returns existing profile: `create_profile()`
-- Update existing profiles
+- Update existing profiles:`create_update_profile()`
 - Delete profiles
 - Persist data to file
 
@@ -75,7 +75,7 @@ Accomodations include:
 - Priority registration
 - Access to recorded lectures
 
-###🤝 Mentor Matching
+### 🤝 Mentor Matching
 
 Students are matched with mentors based on condition.
 
@@ -89,30 +89,30 @@ Supported Conditions:
 
 If no direct match is found, a general mentor is assigned.
 
-###📊 System Analytics
+### 📊 System Analytics
 
 The system calculates:
 
 - Average stress level across students: `average_stress_level(students)`
 - Average sleep hours across students: `average_sleep_hours(students)`
 
-###▶️ Installation & Running
-####1️⃣ Clone the Repository
+### ▶️ Installation & Running
+#### 1️⃣ Clone the Repository
 
 `git clone https://github.com/yourusername/support-network.git`
 `cd support-network`
 
-####2️⃣ Ensure Folder Structure
+#### 2️⃣ Ensure Folder Structure
 
 Make sure the following file exists before running:
 
 `support_network_gui/students.csv`
 
-####3️⃣ Run the Program
+#### 3️⃣ Run the Program
 
 `python support_network.py`
 
-###🔒 Error Handling
+### 🔒 Error Handling
 
 The program includes handling for:
 
@@ -121,14 +121,14 @@ The program includes handling for:
 - Missing stress/sleep values
 - Safe dictionary lookups
 
-###🧩 Built With
+### 🧩 Built With
 
 - Python 3
 - Built-in csv module
 - Dictionary-based data storage
 - File I/O operations
 
-###🚀 Future Enhancements
+### 🚀 Future Enhancements
 
 - GUI integration (Tkinter or PyQt)
 - Database backend (SQLite/PostgreSQL)
@@ -137,7 +137,7 @@ The program includes handling for:
 - Reporting dashboard
 - REST API version
 
-###🤝 Contributing
+### 🤝 Contributing
 
 Contributions are welcome!
 
@@ -150,7 +150,7 @@ Contributions are welcome!
    `git push origin feature-name`
 -Open pull request
 
-###📄 License
+### 📄 License
 
 This project is intended for educational and academic use.
 
